@@ -11,9 +11,11 @@
                 <p>{{$new->description}} <br/>
                     <strong>Autor: {{$new->namewriter->name}}</strong>                    
                 </p>
-                <p>
+                @can('update-notice', $new )
+                <p>                    
                     <a href="{{url("update/$new->id")}}">Editar</a>
                 </p>
+                @endcan
                 
               </article>  
               @endforeach

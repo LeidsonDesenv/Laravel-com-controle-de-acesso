@@ -27,9 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //$news = $this->notice->all(); pega todos registros
+        $news = $this->notice->all(); //pega todos registros
         //pega as notices do usuário atual
-        $news = $this->notice->where('user_id', auth()->user()->id)->get();
+       // $news = $this->notice->where('user_id', auth()->user()->id)->get();
         
         
         return view('home', compact('news'));

@@ -37,7 +37,18 @@
                                 @endif
                             </div>
                         </div>
-
+                        <div class="row form-group">                            
+                            <label  class="col-md-4 control-label">Nível Usuário</label>
+                            <div class="col-md-6">
+                                <select class=" form-control" name="access_id">
+                                    <option value="1">Manager</option>
+                                    <option value="2">Publisher</option>
+                                </select>
+                            </div>
+                            <p></p>
+                        </div>
+                            
+                        
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
