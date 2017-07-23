@@ -7,7 +7,8 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 
 
 //use App\Notices;
-//use App\User;
+use App\User;
+use App\Permission;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -17,7 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        \App\Notices::class => \App\Policies\NoticePolicy::class,
+     //   \App\Notices::class => \App\Policies\NoticePolicy::class,
     ];
 
     /**
@@ -32,7 +33,17 @@ class AuthServiceProvider extends ServiceProvider
        /*Gate::define('update-notice', function( User $user , Notices $notice){
            return  $notice->user_id == $user->id;
        }); */
-            
+      
+      $permissions = Permission::with('roles')->get(); //retorna permission->name
+      
+      foreach($permissions as $permission){
+          Gate::define($permission->name,function(User $user) use ($permission){
+                return $user->hasPermission($permission); //compara roles com user
+            });
+          
+      }
+      
+      
     
         
     }

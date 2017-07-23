@@ -11,7 +11,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ url('css/app.css') }}" rel="stylesheet">
+    <link href="{{ url('css/custom.css') }}" rel="stylesheet">
+
+
 </head>
 <body>
     <div id="app">
@@ -73,6 +76,7 @@
 
         @yield('content')
     </div>
+    
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

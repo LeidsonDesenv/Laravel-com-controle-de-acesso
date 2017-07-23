@@ -3,23 +3,26 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
+            @include('layouts.nav')
             <div style="background-color: white ">
-              @foreach($news as $new)
-              <article>
-                <h3>{{$new->title}}</h3>
-                <p>{{$new->description}} <br/>
-                    <strong>Autor: {{$new->namewriter->name}}</strong>                    
-                </p>
-                @can('update-notice', $new )
-                <p>                    
-                    <a href="{{url("update/$new->id")}}">Editar</a>
-                </p>
-                @endcan
                 
-              </article>  
-              @endforeach
               
+                <h1 style="background-color: #3b699e;; color:white; padding-left: 10px">Todas as Notícias</h1>
+                @foreach($news as $notice)
+                <h3 class="title-notice">{{$notice->title}}</h3>
+                <p class="body-notice">
+                    {{$notice->description}}<br>
+                    <strong>
+                        Escrito por :{{$notice->namewriter->name}}
+                    </strong>
+                </p>
+                <hr/> 
+                @endforeach
+                
+                <nav style="text-align: center">{{$news->links()}}</nav>
+                    
+               
             </div>
         </div>
     </div>

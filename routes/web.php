@@ -17,5 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('update/{id}', 'HomeController@update');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('update/{id}', 'HomeController@update');
+    
+    //notice routes
+    Route::get('notices/{num}', 'Notices\NoticesController@index');
+    
+    //user routes
+    Route::get('allusers' , 'Users\UsersController@index');
+
+    //Roles routes    
+    Route::get('allroles', 'Roles\RolesController@index');
+    
+    //permission routes
+    Route::get('allpermission', 'Permissions\PermissionsController@index');
