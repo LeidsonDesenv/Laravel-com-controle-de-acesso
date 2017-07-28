@@ -21,13 +21,20 @@ Auth::routes();
     Route::get('update/{id}', 'HomeController@update');
     
     //notice routes
-    Route::get('notices/{num}', 'Notices\NoticesController@index');
+    Route::group(['namespace' => 'Notices'], function()
+    {
+        Route::get('notices/{num}', 'NoticesController@index')->name('notices');
+        Route::get('geranotices', 'NoticesController@make');
+    });
     
     //user routes
-    Route::get('allusers' , 'Users\UsersController@index');
+    Route::group(['namespace' => 'Users'], function()
+    {
+        Route::get('allusers' , 'UsersController@index')->name('allusers');
+    });
 
     //Roles routes    
-    Route::get('allroles', 'Roles\RolesController@index');
+    Route::get('allroles', 'Roles\RolesController@index')->name('allroles');
     
     //permission routes
-    Route::get('allpermission', 'Permissions\PermissionsController@index');
+    Route::get('allpermissions', 'Permissions\PermissionsController@index')->name('allpermissions');
