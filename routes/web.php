@@ -23,8 +23,11 @@ Auth::routes();
     //notice routes
     Route::group(['namespace' => 'Notices'], function()
     {
-        Route::get('notices/{num}', 'NoticesController@index')->name('notices');
+        Route::get('notices/{num}', 'NoticesController@index')->name('notices');        
+        Route::get('addnotices', 'NoticesController@writeNotice')->name('addnotices');
         Route::get('geranotices', 'NoticesController@make');
+        Route::post('savenotices', 'NoticesController@create')->name('savenotices');
+        Route::post('search', 'NoticesController@searchByName')->name('search');
     });
     
     //user routes
