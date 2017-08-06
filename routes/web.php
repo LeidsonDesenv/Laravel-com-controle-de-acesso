@@ -25,9 +25,13 @@ Auth::routes();
     {
         Route::get('notices/{num}', 'NoticesController@index')->name('notices');        
         Route::get('addnotices', 'NoticesController@writeNotice')->name('addnotices');
+        Route::get('editnotices/{id}', 'NoticesController@editNotice')->name('editnotices');
+        Route::post('updatenotice', 'NoticesController@updateNotice')->name('updatenotices');
         Route::get('geranotices', 'NoticesController@make');
         Route::post('savenotices', 'NoticesController@create')->name('savenotices');
         Route::post('search', 'NoticesController@searchByName')->name('search');
+        Route::post('delnotice', 'NoticesController@delNotice')->name('delnotices');
+        
     });
     
     //user routes

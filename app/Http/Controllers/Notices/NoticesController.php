@@ -16,11 +16,21 @@ class NoticesController extends Controller
     public function index($num)
     {        
         
-        $notices = $this->notice->where('user_id', $num)->get(); 
-        //vo consultar todos os valores e filtrar na view usando a diretiva @can do blade
+        $notices = $this->notice->where('user_id', $num)->paginate(8); 
+        
+        //vo consultar  os valores e filtrar na view usando a diretiva @can do blade
+        //poderia solicitar todos os valores e filtrar na view, mas por performance usei a opção acima.
         //$notices = $this->notice->all();
         return view('Notices.noticeUser', compact('notices'));        
         
+    }
+    
+    public function editNotice($id)
+    {
+
+       $notices = $this->notice->find($id);      
+        
+        return view('Notices.writeNotices' , compact('notices') );
     }
     
     public function writeNotice(){
@@ -47,6 +57,43 @@ class NoticesController extends Controller
              echo "Erro ao cadastrar.";
              echo '<a href ="'. route("addnotices").'">Voltar</a>' ;
          }             
+    }
+    
+    public function updateNotice(Request $request)
+    {
+        
+        $update = $this->notice->find($request->id)
+                ->update([
+                    'title' => $request->title,
+                    'description' => $request->description
+                ]);
+        if($update){
+            return  "Atualização realizada com sucesso.<br/> <a href=". route("notices",['num' => auth()->user()->id]) .
+                    "> Tela de Notícias </a>";
+        }   
+        else{
+            return  "Erro ao atualizar.<br/> <a href=". route("notices") .
+                    "> Tela de Notícias </a>";
+        }
+        
+            
+       // dd($update);
+    }
+    
+    public function delNotice(Request $request)
+    {
+        
+        
+        $del =  $this->notice->find($request->id)->delete();
+        if($del){        
+            return  "Remoção realizada com sucesso.<br/> <a href=". route("notices",['num' => auth()->user()->id]) .
+                    "> Tela de Notícias </a>";
+        }
+        else {
+            return  "Erro ao remover notícia.<br/> <a href=". route("notices",['num' => auth()->user()->id]) .
+                    "> Tela de Notícias </a>";
+        }
+         
     }
     
     public function searchByName(Request $request)

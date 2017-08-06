@@ -9,11 +9,12 @@ Um sistema com controle de acesso, nível de usuário, registro de usuário, div
         <li>Middleware Auth no construtor do HomeControler</li>
         <li>Gate para limitar a visualização dos usuários aos próprios posts</li>
     </ul>
-    <li>Criação da Model Notices</li>
+    <li>Criação da Model Notices</li>    
     <ul>
         <li>Migration para o banco de dados</li>
-        <li>Acesso aos dados cadastrados</li>
-        <li>Tela de Edição Quase Pronta</li>
+        <li>Crud de Notices está completo</li>
+        <li>Pesquisa Nocites por parte do nome</li>
+        
     </ul>
     
     

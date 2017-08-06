@@ -8,7 +8,7 @@
     
     <div style="margin-top:15px" class="btn-group" role="group" aria-label="add-edit-remove">
         <a href="{{route("addnotices")}}" class="btn btn-md btn-primary">Adicionar</a>
-        <a href="#" class="btn btn-md btn-primary">Editar</a>
+        <!-- <a href="#" class="btn btn-md btn-primary">Editar</a> -->
         <a href="#" class="btn btn-md btn-primary">Remover</a>
         <form style="margin-top:0" class="navbar-form navbar-left" method="post" 
               action="{{ route("search") }}">
@@ -34,10 +34,14 @@
                     <h3 class="title-notice">{{$notice->title}}</h3>
                     <p class="body-notice">{{$notice->description}}</p>
                     <p><strong>Autor: {{ $notice->namewriter->name }}</strong></p>
+                    <a href="{{ route("editnotices", ["id" => $notice->id]) }}" class="btn btn-primary">Editar</a>
                     <hr/>
                     @endcan
-                @endforeach            
+                @endforeach     
+                <nav style="text-align: center">{{$notices->links()}}</nav>
             @endif
+            
+            
         
             @if(isset($select))
                 @foreach($select as $item)
