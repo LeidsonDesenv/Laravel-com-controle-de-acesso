@@ -13,10 +13,6 @@ Um sistema com controle de acesso, nível de usuário, registro de usuário, div
     <ul>
         <li>Migration para o banco de dados</li>
         <li>Crud de Notices está completo</li>
-        <li>Pesquisa Nocites por parte do nome</li>
-        
+        <li>Pesquisa Nocites por parte do nome</li>       
     </ul>
-    
-    
-    
 </ul>
